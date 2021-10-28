@@ -30,7 +30,7 @@
 * EntityStatus IGetEntityStatus()
   
 # 【EA_IFunctions】
-> ~standard~
+> standarda
 * A_WaitForSeconds(float time)
 * A_WaitUntil(Func<bool> condition)
 * A_Destroy(GameObject gameObject = null, System.Action action = null)
