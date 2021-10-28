@@ -3,7 +3,7 @@
 ※ EntityStatusをインポートする必要があります。
 
 
-# コンポーネントに追加 & 取得
+# Component add & get
 * EntityActionCon ComponentEntityActionCon(this GameObject self)
 * EntityActionCon ComponentEntityActionCon(this EntityStatus self)
 * EntityActionCon_Node ComponentEntityActionCon<EntityActionCon_Node>(this GameObject self)
