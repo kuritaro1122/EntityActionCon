@@ -2,7 +2,7 @@
 [Beta] Entityにさまざまな命令を付与するプログラム
 ※ EntityStatusをインポートする必要があります。
 
-#【簡易リファレンス】
+# 【簡易リファレンス】
 **コンポーネントに追加 & 取得**
 * EntityActionCon ComponentEntityActionCon(this GameObject self)
 * EntityActionCon ComponentEntityActionCon(this EntityStatus self)
@@ -31,14 +31,14 @@
 * Rigidbody IGetRigidbody()
 * EntityStatus IGetEntityStatus()
   
-# 【EA_IFunctions】
+**EA_IFunctions**
 * A_WaitForSeconds(float time)
 * A_WaitUntil(Func<bool> condition)
 * A_Destroy(GameObject gameObject = null, System.Action action = null)
 * A_DebugLog(string message)
 * A_ChainFunction(bool asyn, params EA_IFunction[] functions)
 * A_LoopFunction(bool asyn, Func<bool> condition, int count, bool and, params EA_IFunction[] functions)
-- this(bool asyn, Func<bool> condition, params EA_IFunction[] functions)
-- this(bool asyn, int count, params EA_IFunction[] functions)
+  - this(bool asyn, Func<bool> condition, params EA_IFunction[] functions)
+  - this(bool asyn, int count, params EA_IFunction[] functions)
 * A_Action(System.Action action)
 * A_Coroutine(bool asyn, IEnumerator coroutine)
