@@ -30,6 +30,7 @@
 * EntityStatus IGetEntityStatus()
   
 # 【EA_IFunctions】
+> ~standard~
 * A_WaitForSeconds(float time)
 * A_WaitUntil(Func<bool> condition)
 * A_Destroy(GameObject gameObject = null, System.Action action = null)
@@ -40,4 +41,3 @@
   - this(bool asyn, int count, params EA_IFunction[] functions)
 * A_Action(System.Action action)
 * A_Coroutine(bool asyn, IEnumerator coroutine)
-
