@@ -9,8 +9,7 @@
 * EntityActionCon_Node ComponentEntityActionCon<EntityActionCon_Node>(this GameObject self)
 * EntityActionCon_Node ComponentEntityActionCon<EntityActionCon_Node>(this EntityStatus self)
 
-**EntityActionCon**
-~ public関数 ~
+**【EntityActionCon】**
 * EntityActionCon Set(params EA_IFunction[] functions)
   - EntityActionCon Set(params EF_IFunction[] functions) //非推奨
 * Coroutine BeginAction()
@@ -19,8 +18,7 @@
 * Rigidbody IGetRigidbody()
 * EntityStatus IGetEntityStatus()
 
-**EntityActionCon_Node**
-~ public関数 ~
+**【EntityActionCon_Node】**
 * EntityActionCon_Node SetNode(int index, params (bool, int, Func<bool>)[] nodeTransitions)
   - EntityActionCon_Node SetNode(int index, params NodeTransition[] nodeTransitions, NodeTransition[] nodeForcedTransition)
 * EntityActionCon_Node SetFunction(params EA_IFunction[] functions)
@@ -31,7 +29,7 @@
 * Rigidbody IGetRigidbody()
 * EntityStatus IGetEntityStatus()
   
-**EA_IFunctions**
+**【EA_IFunctions】**
 * A_WaitForSeconds(float time)
 * A_WaitUntil(Func<bool> condition)
 * A_Destroy(GameObject gameObject = null, System.Action action = null)
