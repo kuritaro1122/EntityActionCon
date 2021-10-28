@@ -54,6 +54,7 @@
 # Example
 ```
 GameObject enemy1, enemy2, bullet, player;
+  
 Instantiate(enemy1)
 .ComponentEntityActionCon().Set(
   new A_WaitForSeconds(2f),
