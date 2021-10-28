@@ -30,7 +30,7 @@
 * EntityStatus IGetEntityStatus()
   
 # 【EA_IFunctions】
-> standarda
+> standard
 * A_WaitForSeconds(float time)
 * A_WaitUntil(Func<bool> condition)
 * A_Destroy(GameObject gameObject = null, System.Action action = null)
@@ -41,3 +41,12 @@
   - this(bool asyn, int count, params EA_IFunction[] functions)
 * A_Action(System.Action action)
 * A_Coroutine(bool asyn, IEnumerator coroutine)
+> entity3d
+* A_Movement(bool asyn, Vector3? beginPos, Vector3 Pos, float duration, bool addPos = false, bool speedBase = false)
+  - this(bool asyn, Vector3 pos, float duration)
+  - this(bool asyn, Vector3 pos, float duration, bool addPos = false, bool speedBase = false)
+* A_MovementSin(bool asyn, Vector3 beginPos, Vector3 pos, float amplitude, float frequency, float time, Vector3 upwards)
+  - this(bool asyn, Vector3 pos, float amplitude, float frequency, float time, Vector3 upwards)
+* A_Shot(bool asyn, GameObject ShotPrefab, int num, float span, params A_Shot.LaunchInfo[] launchInfos)
+  - AShot.LaunchInfo(Vector3 pos, Vector3 direction, bool localPos = true, bool localDire = true, float waitTime = 0f)
+  - AShot.LaunchInfo(Vector3 pos, Transform target, bool localPos = true, float waitTime = 0f)
