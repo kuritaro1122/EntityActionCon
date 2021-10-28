@@ -12,7 +12,7 @@
 **EntityActionCon**
 ~ public関数 ~
 * EntityActionCon Set(params EA_IFunction[] functions)
-- EntityActionCon Set(params EF_IFunction[] functions) //非推奨
+  - EntityActionCon Set(params EF_IFunction[] functions) //非推奨
 * Coroutine BeginAction()
 
 * MonoBehaviour IGetMonoBehaviour()
@@ -22,9 +22,9 @@
 **EntityActionCon_Node**
 ~ public関数 ~
 * EntityActionCon_Node SetNode(int index, params (bool, int, Func<bool>)[] nodeTransitions)
-- EntityActionCon_Node SetNode(int index, params NodeTransition[] nodeTransitions, NodeTransition[] nodeForcedTransition)
+  - EntityActionCon_Node SetNode(int index, params NodeTransition[] nodeTransitions, NodeTransition[] nodeForcedTransition)
 * EntityActionCon_Node SetFunction(params EA_IFunction[] functions)
-- EntityActionCon_Node SetFunction(params FE_IFunction[] functions) //非推奨
+  - EntityActionCon_Node SetFunction(params FE_IFunction[] functions) //非推奨
 * Coroutine BeginAction()
   
 * MonoBehaviour IGetMonoBehaviour()
