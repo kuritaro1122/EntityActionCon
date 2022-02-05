@@ -5,10 +5,10 @@ using FuncExecutor;
 using EntityBehavior.Status;
 
 namespace EntityBehavior.Action {
+    [AddComponentMenu("EntityBehaviour/EntityActionCon")]
     public class EntityActionCon : FunctionExecutor, IEntityActionCon {
         [SerializeField] EntityStatus entityStatus;
         [SerializeField] new Rigidbody rigidbody;
-
         public EntityActionCon Set(FE_IFunction function, params FE_IFunction[] functions) {
             base.Set(function);
             base.Set(functions);
@@ -19,7 +19,6 @@ namespace EntityBehavior.Action {
             base.Set(functions);
             return this;
         }
-
         public EntityStatus IGetEntityStatus() => this.entityStatus;
         public Rigidbody IGetRigidbody() => this.rigidbody;
 
@@ -31,7 +30,6 @@ namespace EntityBehavior.Action {
                     actionCon.IGetMonoBehaviour().StartCoroutine(enumerator);
                 else yield return enumerator;
             }
-            //if (functions == null) yield return null;
         }
     }
 

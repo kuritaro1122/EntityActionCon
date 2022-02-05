@@ -96,7 +96,7 @@ namespace EntityBehavior.Action {
     }
 
     public class A_Coroutine : ToEAFunction<F_Coroutine> {
-        public A_Coroutine(bool asyn, IEnumerator coroutine) : base(new F_Coroutine(asyn, coroutine)) {}
+        public A_Coroutine(bool asyn, Func<IEnumerator> enumerator) : base(new F_Coroutine(asyn, enumerator)) {}
     }
 
     public class ToEAFunction<I> : EA_IFunction where I : FE_IFunction {

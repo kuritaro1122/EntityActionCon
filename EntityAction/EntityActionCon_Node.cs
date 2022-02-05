@@ -6,6 +6,7 @@ using System;
 using EntityBehavior.Status;
 
 namespace EntityBehavior.Action {
+    [AddComponentMenu("EntityBehaviour/EntityActionCon_Node")]
     public class EntityActionCon_Node : FunctionExecutor_Node, IEntityActionCon {
         [SerializeField] EntityStatus entityStatus;
         [SerializeField] new Rigidbody rigidbody;
@@ -32,13 +33,4 @@ namespace EntityBehavior.Action {
         public EntityStatus IGetEntityStatus() => this.entityStatus;
         public Rigidbody IGetRigidbody() => this.rigidbody;
     }
-
-    /*public static class AddComponenter_EA_N {
-        public static EntityActionCon_Node ComponentEntityAction_Node(this GameObject self) {
-            return self.ComponentCheck<EntityActionCon_Node>();
-        }
-        public static EntityActionCon_Node ComponentEntityAction_Node(this EntityStatus self) {
-            return self.gameObject.ComponentCheck<EntityActionCon_Node>();
-        }
-    }*/
 }

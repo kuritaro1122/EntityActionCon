@@ -74,6 +74,23 @@ namespace FuncExecutor {
         public bool IGetIsAsyn() => asyn;
     }
 
+    /*public struct F_MultiFunction : FE_IFunction {
+        private FE_IFunction[] functions;
+        private bool asyn;
+        public F_MultiFunction(bool asyn, params FE_IFunction[] functions) {
+            this.asyn = asyn;
+            this.functions = MergeArrayClass.MergeArray(functions);
+        }
+        public IEnumerator IGetFunction(IFunctionExecutor executor) {
+
+        }
+        public bool IGetIsAsyn() => asyn;
+        private class FunctionChecker {
+            private FE_IFunction function;
+            private int runState = 0;
+        }
+    }*/
+
     public struct F_LoopFunction : FE_IFunction {
         enum LoopType { Condition, Count, Both }
         private LoopType type;
@@ -132,14 +149,14 @@ namespace FuncExecutor {
         public bool IGetIsAsyn() => false;
     }
 
-    public struct F_Coroutine : FE_IFunction {
-        private IEnumerator coroutine;
+    public class F_Coroutine : FE_IFunction {
+        private Func<IEnumerator> enumerator;
         private bool asyn;
-        public F_Coroutine(bool asyn, IEnumerator coroutine) {
-            this.coroutine = coroutine;
+        public F_Coroutine(bool asyn, Func<IEnumerator> enumerator) {
+            this.enumerator = enumerator;
             this.asyn = asyn;
         }
-        public IEnumerator IGetFunction(IFunctionExecutor executor) => this.coroutine;
+        public IEnumerator IGetFunction(IFunctionExecutor executor) => this.enumerator();
         public bool IGetIsAsyn() => this.asyn;
     }
 }
