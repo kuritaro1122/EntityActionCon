@@ -1,5 +1,5 @@
 [EntityActionConはこちら](/README.md)
-# FunctionExecutor_Node
+# EntityActionCon_Node
 
 Entityに命令を付与し、非同期的に逐次実行する。\
 ノードごとに命令をまとめ、それらを遷移しながら実行する。\
