@@ -4,7 +4,16 @@ using UnityEngine;
 using FuncExecutor;
 
 namespace EntityBehavior.Action {
-    public struct A_Movement : EA_IFunction {
+    public class A_FunctionClass<T> : EA_IFunction where T : EA_IFunction {
+        private System.Func<T> function;
+        public void Set(T function) => this.function = () => function;
+        public void ISetEntityActionCon(IEntityActionCon actionCon) => this.function().ISetEntityActionCon(actionCon);
+        public IEnumerator IGetFunction(IFunctionExecutor executor) => this.function().IGetFunction(executor);
+        public bool IGetIsAsyn() => this.function().IGetIsAsyn();
+        public T GetFunction() => this.function();
+    }
+
+    public class A_Movement : EA_IFunction {
         private Rigidbody rb;
         private bool asyn;
         private Vector3? beginPos;
@@ -24,19 +33,28 @@ namespace EntityBehavior.Action {
             this.addPos = addPos;
             this.speedBase = speedBase;
             this.rb = null;
+            this.ElapsedTimeRate = 0f;
         }
+        public float ElapsedTimeRate { get; private set; }
         private IEnumerator Movement(Transform transform) {
             Vector3 _beginPos = beginPos ?? transform.localPosition;
             Vector3 _endPos = addPos ? _beginPos + pos : pos;
             float _time = speedBase ? Vector3.Distance(_beginPos, _endPos) / duration : duration;
-            float elapsedTime = _time;
-            while (elapsedTime > 0f) { //条件変える？？
-                if (rb != null && rb.isKinematic == false) rb.velocity = (_endPos - _beginPos) / _time;
-                else transform.localPosition = Vector3.Lerp(_beginPos, _endPos, 1 - elapsedTime / _time);
-                elapsedTime -= Time.deltaTime;
+            float remainTime = _time;
+            while (remainTime > 0f) { //条件変える？？
+                this.ElapsedTimeRate = 1 - remainTime / _time;
+                Vector3 pos = Vector3.Lerp(_beginPos, _endPos, this.ElapsedTimeRate);
+                if (rb != null && rb.isKinematic == false) {
+                    rb.velocity = (_endPos - _beginPos) / _time;
+                    rb.MovePosition(pos);
+                } else transform.localPosition = pos;
+                remainTime -= Time.deltaTime;
                 yield return null;
             }
+            this.ElapsedTimeRate = 1;
             if (rb != null && rb.isKinematic == false) rb.velocity = Vector3.zero;
+            if (rb != null && rb.isKinematic == false) rb.MovePosition(_endPos);
+            else transform.localPosition = _endPos;
         }
         public void ISetEntityActionCon(IEntityActionCon actionCon) {
             this.rb = actionCon.IGetRigidbody();
