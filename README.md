@@ -3,7 +3,7 @@
 # EntityActionCon
 
 Entityに命令を付与し、非同期的に逐次実行する。\
-[FunctionExecutor](https://github.com/kuritaro1122/FunctionExecutor)の派生プログラムです。
+[FunctionExecutor](https://github.com/kuritaro1122/FunctionExecuter)の派生プログラムです。
 
 <!--# DEMO
 
@@ -15,7 +15,7 @@ Entityに命令を付与し、非同期的に逐次実行する。\
 * UnityEngine
 * System
 * System.Collections
-* [FunctionExecutor](https://github.com/kuritaro1122/FunctionExecutor)
+* [FunctionExecutor](https://github.com/kuritaro1122/FunctionExecuter)
 * [EntityBehaviour.Status](https://github.com/kuritaro1122/EntityStatus)
 
 # Usage
