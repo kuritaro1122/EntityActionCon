@@ -1,6 +1,6 @@
 [EntityActionCon_Nodeはこちら](/README_node.md)
 
-# FunctionExecutor
+# EntityActionCon
 
 Entityに命令を付与し、非同期的に逐次実行する。\
 [FunctionExecutor](https://github.com/kuritaro1122/FunctionExecutor)の派生プログラムです。
