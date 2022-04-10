@@ -1,17 +1,16 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FuncExecutor;
 
 namespace EntityBehavior.Action {
-    public class A_FunctionClass<T> : EA_IFunction where T : EA_IFunction {
+    /*public class A_FunctionClass<T> : EA_IFunction where T : EA_IFunction {
         private System.Func<T> function;
         public void Set(T function) => this.function = () => function;
         public void ISetEntityActionCon(IEntityActionCon actionCon) => this.function().ISetEntityActionCon(actionCon);
         public IEnumerator IGetFunction(IFunctionExecutor executor) => this.function().IGetFunction(executor);
         public bool IGetIsAsyn() => this.function().IGetIsAsyn();
         public T GetFunction() => this.function();
-    }
+    }*/
 
     public class A_Movement : EA_IFunction {
         private Rigidbody rb;
@@ -106,7 +105,7 @@ namespace EntityBehavior.Action {
         private int num;
         private float span;
         private LaunchInfo[] launchInfos;
-        public A_Shot(bool asyn, GameObject ShotPrefab, int num, float span, params LaunchInfo[] launchInfos) { //タプル版も作るか
+        public A_Shot(bool asyn, GameObject ShotPrefab, int num, float span, params LaunchInfo[] launchInfos) {
             this.asyn = asyn;
             this.ShotPrefab = ShotPrefab;
             this.num = num;
@@ -126,7 +125,6 @@ namespace EntityBehavior.Action {
         public void ISetEntityActionCon(IEntityActionCon actionCon) {}
         public IEnumerator IGetFunction(IFunctionExecutor executor) => Shot(executor.IGetMonoBehaviour().transform);
         public bool IGetIsAsyn() => this.asyn;
-
         [System.Serializable]
         public struct LaunchInfo {
             private enum DirectionType { direction, lookAtTarget }
