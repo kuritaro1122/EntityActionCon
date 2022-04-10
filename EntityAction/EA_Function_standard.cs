@@ -14,11 +14,61 @@ namespace EntityBehavior.Action {
     }
 
     public class A_Destroy : ToEAFunction<F_Destroy> { //ドロップアイテム？？
-        public A_Destroy(GameObject gameObject = null, System.Action action = null) : base(new F_Destroy(gameObject, action)) {}
+        public A_Destroy(GameObject gameObject = null) : base(new F_Destroy(gameObject)) {}
     }
 
     public class A_DebugLog : ToEAFunction<F_DebugLog> {
         public A_DebugLog(string message) : base(new F_DebugLog(message)) {}
+    }
+
+    public class A_Action : EA_IFunction {
+        private System.Action<IEntityActionCon> action;
+        private IEntityActionCon actionCon = null;
+        public A_Action(System.Action action) {
+            this.action = ea => action();
+        }
+        public A_Action(System.Action<IEntityActionCon> action) {
+            this.action = action;
+        }
+        public void ISetEntityActionCon(IEntityActionCon actionCon) {
+            this.actionCon = actionCon;
+        }
+        public IEnumerator IGetFunction(IFunctionExecutor executor) {
+            this.action(this.actionCon);
+            return null;
+        }
+        public bool IGetIsAsyn() => false;
+    }
+
+    public class A_Coroutine : EA_IFunction {
+        private System.Func<IEntityActionCon, IEnumerator> enumerator;
+        private IEntityActionCon actionCon = null;
+        private bool asyn;
+        public A_Coroutine(bool asyn, System.Func<IEnumerator> enumerator) {
+            this.enumerator = fe => enumerator();
+            this.asyn = asyn;
+        }
+        public A_Coroutine(bool asyn, System.Func<IFunctionExecutor, IEnumerator> enumerator) {
+            this.enumerator = enumerator;
+            this.asyn = asyn;
+        }
+        public void ISetEntityActionCon(IEntityActionCon actionCon) {
+            this.actionCon = actionCon;
+        }
+        public IEnumerator IGetFunction(IFunctionExecutor executor) {
+            return this.enumerator(this.actionCon);
+        }
+        public bool IGetIsAsyn() => this.asyn;
+    }
+
+    public class ToEAFunction<I> : EA_IFunction where I : FE_IFunction {
+        private readonly I function;
+        public ToEAFunction(I function) {
+            this.function = function;
+        }
+        public void ISetEntityActionCon(IEntityActionCon actionCon) {}
+        public IEnumerator IGetFunction(IFunctionExecutor executor) => this.function.IGetFunction(executor);
+        public bool IGetIsAsyn() => this.function.IGetIsAsyn();
     }
 
     public struct A_ChainFunction : EA_IFunction {
@@ -89,32 +139,5 @@ namespace EntityBehavior.Action {
             return t1 || t2 || t3;
         }
         public bool IGetIsAsyn() => this.asyn;
-    }
-
-    public class A_Action : ToEAFunction<F_Action> {
-        public A_Action(System.Action action) : base(new F_Action(action)) {}
-    }
-
-    public class A_Coroutine : ToEAFunction<F_Coroutine> {
-        public A_Coroutine(bool asyn, Func<IEnumerator> enumerator) : base(new F_Coroutine(asyn, enumerator)) {}
-    }
-
-    public class ToEAFunction<I> : EA_IFunction where I : FE_IFunction {
-        private readonly I function;
-        public ToEAFunction(I function) {
-            this.function = function;
-        }
-        public void ISetEntityActionCon(IEntityActionCon actionCon) {}
-        public IEnumerator IGetFunction(IFunctionExecutor executor) => this.function.IGetFunction(executor);
-        public bool IGetIsAsyn() => this.function.IGetIsAsyn();
-    }
-
-    public static class ToEAFunction {
-        public static EA_IFunction ToEAFunc(this FE_IFunction function) {
-            return ToEAFunc<FE_IFunction>(function);
-        }
-        public static EA_IFunction ToEAFunc<I>(I function) where I : FE_IFunction {
-            return new ToEAFunction<I>(function);
-        }
     }
 }

@@ -15,6 +15,10 @@ namespace EntityBehavior.Action {
             return this;
         }
         public EntityActionCon Set(params EA_IFunction[] functions) {
+            if (functions == null) {
+                Debug.LogWarning("EntityActionCon/functions is null.", this);
+                return this;
+            }
             foreach (var function in functions) function.ISetEntityActionCon(this);
             base.Set(functions);
             return this;
