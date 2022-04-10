@@ -47,7 +47,7 @@ namespace EntityBehavior.Action {
             this.enumerator = fe => enumerator();
             this.asyn = asyn;
         }
-        public A_Coroutine(bool asyn, System.Func<IFunctionExecutor, IEnumerator> enumerator) {
+        public A_Coroutine(bool asyn, System.Func<IEntityActionCon, IEnumerator> enumerator) {
             this.enumerator = enumerator;
             this.asyn = asyn;
         }
