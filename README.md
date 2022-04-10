@@ -57,7 +57,7 @@ A_MovementSin(bool asyn, Vector3 pos, float amplitude, float frequency, float ti
 A_MovementSin(bool asyn, Vector3? beginPos, Vector3 pos, float amplitude, float frequency, float time, Vector3 upwards)
 A_Shot(bool asyn, GameObject ShotPrefab, int num, float span, params LaunchInfo[] launchInfos)
 ```
-* [EA_Function_Curve]()
+* [EA_Function_Curve](https://github.com/kuritaro1122/EA_Functions_Curve/)
 ```
 A_MovementCurve(bool asyn, ICurve curve, float duration, bool speedBase = false, bool localPos = false, bool localRot = false)
 ```
