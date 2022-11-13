@@ -1,3 +1,5 @@
+[※ObjectOrderController <- 新バージョン](https://github.com/kuritaro1122/ObjectOrderController)
+
 [EntityActionCon_Nodeはこちら](/README_node.md)
 
 # EntityActionCon
@@ -20,7 +22,7 @@ Entityに命令を付与し、非同期的に逐次実行する。\
 
 # Usage
 
-```
+```cs
 GameObject target;
 EntityActionCon actionCon = target.ComponentEntityAction(); //Add or GetComponent
 actionCon.Set(
@@ -33,7 +35,7 @@ actionCon.Set(
 
 ## EA_Functions
 * EA_Function_Standard
-```
+```cs
 A_WaitForSeconds(float time)
 A_WaitUntil(System.Func<bool> condition)
 A_Destroy(GameObject gameObject = null)
@@ -49,7 +51,7 @@ A_LoopFunction(bool asyn, int count, params EA_IFunction[] functions)
 A_LoopFunction(bool asyn, Func<bool> condition, int count, bool and, params EA_IFunction[] functions)
 ```
 * EA_Function_Entity3D
-```
+```cs
 A_Movement(bool asyn, Vector3 pos, float duration)
 A_Movement(bool asyn, Vector3 pos, float duration, bool addPos = false, bool speedBase = false)
 A_Movement(bool asyn, Vector3? beginPos, Vector3 pos, float duration, bool addPos = false, bool speedBase = false)
@@ -63,7 +65,7 @@ A_MovementCurve(bool asyn, ICurve curve, float duration, bool speedBase = false,
 ```
 
 ## EA_IFunction (Interface)
-```
+```cs
 IEnumerator IGetFunction(IFunctionExecutor executor)
 bool IGetAsyn()
 void ISetEntityActionCon(IEntityActionCon actionCon)
@@ -76,11 +78,11 @@ void ISetEntityActionCon(IEntityActionCon actionCon)
 -->
 
 ## Public Variable
-```
+```cs
 bool Running { get; }
-```
+```cs
 ## Public Function
-```
+```cs
 FunctionExecutor Set(params EA_IFunction[] functions)
 FunctionExecutor Set(params FE_IFunction[] functions)
 FunctionExecutor ResetAll()
