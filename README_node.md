@@ -20,7 +20,7 @@ Entityに命令を付与し、非同期的に逐次実行する。\
 
 # Usage
 
-```
+```cs
 GameObject target;
 bool moveToOne = false;
 
@@ -43,7 +43,7 @@ entityAction.SetNode(0, (true, 1, () => moveToOne), (false, 0, () => true))
 
 ## EA_Functions
 * EA_Function_Standard
-```
+```cs
 A_WaitForSeconds(float time)
 A_WaitUntil(System.Func<bool> condition)
 A_Destroy(GameObject gameObject = null)
@@ -59,7 +59,7 @@ A_LoopFunction(bool asyn, int count, params EA_IFunction[] functions)
 A_LoopFunction(bool asyn, Func<bool> condition, int count, bool and, params EA_IFunction[] functions)
 ```
 * EA_Function_Entity3D
-```
+```cs
 A_Movement(bool asyn, Vector3 pos, float duration)
 A_Movement(bool asyn, Vector3 pos, float duration, bool addPos = false, bool speedBase = false)
 A_Movement(bool asyn, Vector3? beginPos, Vector3 pos, float duration, bool addPos = false, bool speedBase = false)
@@ -68,12 +68,12 @@ A_MovementSin(bool asyn, Vector3? beginPos, Vector3 pos, float amplitude, float 
 A_Shot(bool asyn, GameObject ShotPrefab, int num, float span, params LaunchInfo[] launchInfos)
 ```
 * [EA_Function_Curve]()
-```
+```cs
 A_MovementCurve(bool asyn, ICurve curve, float duration, bool speedBase = false, bool localPos = false, bool localRot = false)
 ```
 
 ## EA_IFunction (Interface)
-```
+```cs
 IEnumerator IGetFunction(IFunctionExecutor executor)
 bool IGetAsyn()
 void ISetEntityActionCon(IEntityActionCon actionCon)
@@ -86,7 +86,7 @@ void ISetEntityActionCon(IEntityActionCon actionCon)
 -->
 
 ## Public Function
-```
+```cs
 EntityActionCon_Node SetNode(int index, params (bool, int, Func<bool>)[] nodeTransitions)
 EntityActionCon_Node SetNode(int index, NodeTransition[] nodeTransitions = null, NodeTransition[] nodeForcedTransitions = null)
 FunctionExecutor_Node SetFunction(params EA_IFunction[] functions)
